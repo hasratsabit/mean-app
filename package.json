@@ -1,0 +1,24 @@
+{
+  "name": "mean-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasratsabit/mean-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hasratsabit/mean-app/issues"
+  },
+  "homepage": "https://github.com/hasratsabit/mean-app#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongoose": "^4.11.3"
+  }
+}
