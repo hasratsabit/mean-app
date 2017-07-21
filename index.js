@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const mainRoute = require('./routes/index');
 
@@ -22,11 +23,17 @@ mongoose.connect(config.uri, { useMongoClient: true }, (err) => {
 
 // MIDDLEWARES
 
+// Cross Origin permission.
+// app.use(cors({
+// 	origin: 'htpp://localhost:4200'
+// }))
+
 // Static data
 app.use(express.static(__dirname + '/client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
+// Gives access control to the http requests
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
