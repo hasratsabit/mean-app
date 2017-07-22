@@ -6,6 +6,9 @@ import "rxjs/add/operator/map";
 export class AuthService {
   // The backend url
   domain = "http://localhost:8080";
+  authToken;
+  user;
+
   constructor(
     // Assign the http to a variable
     private http: Http
@@ -23,5 +26,17 @@ export class AuthService {
   // This requrest is created to check email in database instantly.
   findEmail(email) {
     return this.http.get(this.domain + '/authentication/checkEmail/' + email).map(res => res.json());
+  }
+
+  login(user) {
+    return this.http.post(this.domain + '/authentication/login', user).map(res => res.json());
+  }
+
+  // Store the user and token coming from backend in the browser.
+  storeUserData(token, user) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
   }
 }

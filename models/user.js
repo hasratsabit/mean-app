@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 
 // Stop empty input fields for email
-let emailLenghtChecker = (email) => {
+let emailLenghtChecker = function(email){
 	if(!email){
 		return false;
 	}else {
@@ -16,7 +16,7 @@ let emailLenghtChecker = (email) => {
 };
 
 // Check for Valid email format
-let validEmailChecker = (email) => {
+let validEmailChecker = function(email){
 	if(!email){
 		return false;
 	}else {
@@ -38,7 +38,7 @@ const emailValidators = [
 ]
 
 // Stop empty field for Username
-let usernameLenghtChecker = (username) => {
+let usernameLenghtChecker = function(username) {
 	if(!username){
 		return false;
 	}else {
@@ -51,7 +51,7 @@ let usernameLenghtChecker = (username) => {
 }
 
 // Check for valid username;
-let validUsername = (username) => {
+let validUsername = function(username) {
 	if(!username){
 		return false;
 	}else {
@@ -73,7 +73,7 @@ let usernameValidator = [
 ]
 
 // The password length
-let passwordLengthChecker = (password) => {
+let passwordLengthChecker = function(password) {
 	if(!password){
 		return false;
 	}else {
@@ -86,7 +86,7 @@ let passwordLengthChecker = (password) => {
 };
 
 // Valid Password
-let validPassword = (password) => {
+let validPassword = function(password) {
 	if(!password){
 		return false;
 	}else {
@@ -117,7 +117,7 @@ const UserSchema = new Schema({
 UserSchema.pre('save', function(next) {
 	if(!this.isModified('password'))
 	return next();
-	
+
 	bcrypt.hash(this.password, null, null, (err, hash) => {
 		if(err) return next(err);
 		this.password = hash;
@@ -126,7 +126,7 @@ UserSchema.pre('save', function(next) {
 });
 
 // Dcrypt password and match it with database
-UserSchema.methods.comparePassword = (password) => {
+UserSchema.methods.comparePassword = function(password){
 	return bcrypt.compareSync(password, this.password);
 }
 
