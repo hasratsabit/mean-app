@@ -59,7 +59,8 @@ export class LoginComponent implements OnInit {
         this.enableForm();
       }else{
         this.messageClass = 'alert alert-success';
-        this.message = data.messsage;
+        this.message = data.message;
+        // If the user Successfully logged in, store the information in the browser.
         this.authService.storeUserData(data.token, data.user);
         setTimeout(() => {
           this.router.navigate(['/dashboard']);
@@ -69,6 +70,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }
