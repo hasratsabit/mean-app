@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from "./app-routing.module";
 import { AuthService } from "./services/auth.service";
+import { BlogService } from "./services/blog.service";
 import { FlashMessagesModule } from "angular2-flash-messages";
 import { AuthGuard } from "./guards/auth.guard";
 import { NotAuthGuard } from "./guards/notAuth.guard";
@@ -35,7 +36,7 @@ import { BlogComponent } from './components/blog/blog.component';
     AppRoutingModule,
     FlashMessagesModule
   ],
-  providers: [AuthService, AuthGuard, NotAuthGuard],
+  providers: [AuthService, AuthGuard, NotAuthGuard, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
